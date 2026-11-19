@@ -1,0 +1,7 @@
+{
+  "type": "adastra_sealing:capacity_upgrade",
+  "template": { "item": "adastra_sealing:capacity_upgrade_template" },
+  "addition": { "item": "ad_astra:steel_tank" },
+  "amount": 100,
+  "max_capacity": 2000
+}

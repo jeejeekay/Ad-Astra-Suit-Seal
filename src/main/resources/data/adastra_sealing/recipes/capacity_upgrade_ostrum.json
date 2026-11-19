@@ -2,5 +2,6 @@
   "type": "adastra_sealing:capacity_upgrade",
   "template": { "item": "adastra_sealing:capacity_upgrade_template" },
   "addition": { "item": "ad_astra:ostrum_tank" },
-  "amount": 500
+  "amount": 500,
+  "max_capacity": 8000
 }

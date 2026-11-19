@@ -92,7 +92,7 @@ public final class ClientEvents {
         if (seal.isSealed()) {
             List<Component> lines = new ArrayList<>();
             lines.add(Component.translatable("tooltip.adastra_sealing.sealed." + seal.id())
-                    .withStyle(seal.protectsFromHeat() ? ChatFormatting.GOLD : ChatFormatting.AQUA));
+                    .withStyle(seal.protectsFromHeat() ? ChatFormatting.GOLD : ChatFormatting.LIGHT_PURPLE));
             if (SealData.hasTank(stack)) {
                 lines.add(oxygenLine(SealData.getOxygen(stack), SealData.getCapacity(stack)));
             }

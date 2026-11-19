@@ -18,10 +18,10 @@
   "item.adastra_sealing.smithing_template.insulated_suit_sealing.additions_slot_description": "Add the Netherite Space Suit piece for the same slot",
 
   "item.adastra_sealing.smithing_template.capacity_upgrade.applies_to": "Sealed Chestplates, Space Suits",
-  "item.adastra_sealing.smithing_template.capacity_upgrade.ingredients": "Desh, Ostrum or Calorite Tank",
+  "item.adastra_sealing.smithing_template.capacity_upgrade.ingredients": "Steel, Desh, Ostrum or Calorite Tank",
   "item.adastra_sealing.smithing_template.capacity_upgrade.base_slot_description": "Add a sealed chestplate or a Space Suit",
-  "item.adastra_sealing.smithing_template.capacity_upgrade.additions_slot_description": "Add a Desh, Ostrum or Calorite Tank",
+  "item.adastra_sealing.smithing_template.capacity_upgrade.additions_slot_description": "Add a Steel, Desh, Ostrum or Calorite Tank",
 
-  "tooltip.adastra_sealing.sealed.space": "Space Suit Sealed",
-  "tooltip.adastra_sealing.sealed.insulated": "Insulated Suit Sealed"
+  "tooltip.adastra_sealing.sealed.space": "Space Suit",
+  "tooltip.adastra_sealing.sealed.insulated": "Insulated Space Suit"
 }

@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Equipable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
@@ -48,9 +49,15 @@ public final class SuitLogic {
         return item instanceof Equipable equipable && equipable.getEquipmentSlot() == EquipmentSlot.CHEST;
     }
 
-    /** Real Ad Astra suit pieces are never sealed: they already are a suit. */
+    /**
+     * Ad Astra's own suit pieces are never sealed: they already are a suit. Only Ad Astra's items count here:
+     * packs (Quicreate, for one) add other mods' armor to the suit tags, and those pieces have no oxygen tank
+     * until they are sealed.
+     */
     public static boolean isRealSuitPiece(ItemStack stack) {
-        return stack.getItem() instanceof SpaceSuitItem || stack.is(SPACE_SUITS);
+        if (stack.getItem() instanceof SpaceSuitItem) return true;
+        ResourceLocation id = ForgeRegistries.ITEMS.getKey(stack.getItem());
+        return id != null && "ad_astra".equals(id.getNamespace()) && stack.is(SPACE_SUITS);
     }
 
     private static boolean allArmor(LivingEntity entity, Predicate<ItemStack> test) {

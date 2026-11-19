@@ -20,30 +20,34 @@ import net.minecraft.world.level.Level;
 /**
  * Smithing table: Capacity Upgrade template + a chestplate with an oxygen tank + a tank = a bigger oxygen tank.
  * <p>
- * Works on sealed chestplates and on Ad Astra's own suit chestplates. It can be repeated until the tank reaches
- * the config's maxCapacity; the last upgrade is cut short if it would go over.
+ * Works on sealed chestplates and on Ad Astra's own suit chestplates. Each tank type can be used again and again
+ * until the chestplate's tank reaches that recipe's "max_capacity" (and never past the config's maxCapacity);
+ * the last upgrade is cut short if it would go over.
  *
  * <pre>
  * {
  *   "type": "adastra_sealing:capacity_upgrade",
  *   "template": { "item": "adastra_sealing:capacity_upgrade_template" },
  *   "addition": { "item": "ad_astra:desh_tank" },
- *   "amount": 250
+ *   "amount": 250,
+ *   "max_capacity": 4000
  * }
  * </pre>
- * "amount" is the capacity added, in millibuckets.
+ * "amount" is the capacity added and "max_capacity" the tank size this upgrade stops at, both in millibuckets.
  */
 public class CapacityUpgradeRecipe implements SmithingRecipe {
     private final ResourceLocation id;
     private final Ingredient template;
     private final Ingredient addition;
     private final int amount;
+    private final int maxCapacity;
 
-    public CapacityUpgradeRecipe(ResourceLocation id, Ingredient template, Ingredient addition, int amount) {
+    public CapacityUpgradeRecipe(ResourceLocation id, Ingredient template, Ingredient addition, int amount, int maxCapacity) {
         this.id = id;
         this.template = template;
         this.addition = addition;
         this.amount = amount;
+        this.maxCapacity = maxCapacity;
     }
 
     @Override
@@ -75,7 +79,7 @@ public class CapacityUpgradeRecipe implements SmithingRecipe {
 
     /** The upgraded copy, or empty if this chestplate can't take the upgrade. */
     private ItemStack upgrade(ItemStack base) {
-        int max = SealingConfig.maxCapacity();
+        int max = Math.min(maxCapacity, SealingConfig.maxCapacity());
         if (SealData.hasTank(base)) {
             long room = max - SealData.getCapacity(base);
             if (room <= 0) return ItemStack.EMPTY;
@@ -132,7 +136,9 @@ public class CapacityUpgradeRecipe implements SmithingRecipe {
             if (amount <= 0) {
                 throw new JsonSyntaxException("'amount' must be more than 0");
             }
-            return new CapacityUpgradeRecipe(id, template, addition, amount);
+            // Leave it out to only stop at the config's maxCapacity.
+            int maxCapacity = GsonHelper.getAsInt(json, "max_capacity", Integer.MAX_VALUE);
+            return new CapacityUpgradeRecipe(id, template, addition, amount, maxCapacity);
         }
 
         @Override
@@ -140,7 +146,8 @@ public class CapacityUpgradeRecipe implements SmithingRecipe {
             Ingredient template = Ingredient.fromNetwork(buffer);
             Ingredient addition = Ingredient.fromNetwork(buffer);
             int amount = buffer.readVarInt();
-            return new CapacityUpgradeRecipe(id, template, addition, amount);
+            int maxCapacity = buffer.readVarInt();
+            return new CapacityUpgradeRecipe(id, template, addition, amount, maxCapacity);
         }
 
         @Override
@@ -148,6 +155,7 @@ public class CapacityUpgradeRecipe implements SmithingRecipe {
             recipe.template.toNetwork(buffer);
             recipe.addition.toNetwork(buffer);
             buffer.writeVarInt(recipe.amount);
+            buffer.writeVarInt(recipe.maxCapacity);
         }
     }
 }

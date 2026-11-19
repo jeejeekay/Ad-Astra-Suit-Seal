@@ -2,5 +2,6 @@
   "type": "adastra_sealing:capacity_upgrade",
   "template": { "item": "adastra_sealing:capacity_upgrade_template" },
   "addition": { "item": "ad_astra:desh_tank" },
-  "amount": 250
+  "amount": 250,
+  "max_capacity": 4000
 }
