@@ -15,8 +15,9 @@ The result is the same armor piece with "Space Suit" (purple) or "Insulated Spac
 - Any mix of sealed pieces and real Ad Astra suit pieces counts as a full suit. The weakest piece decides: heat
   protection needs every piece insulated (or netherite suit).
 - A space-sealed piece can be re-sealed as insulated.
-- Armor that a pack adds to Ad Astra's suit tags (e.g. Cataclysm armor in Quicreate) can still be sealed; only Ad
-  Astra's own suit pieces can't.
+- Pieces Ad Astra already counts as a suit (its own suits, or anything in `ad_astra:space_suit_items`) can't be
+  sealed. To make another mod's armor space-worthy, seal it rather than adding it to Ad Astra's tags: tagged
+  chestplates have no oxygen tank.
 - A sealed chestplate gets its own oxygen tank (1,000 mB, like the space suit). Fill it in the Oxygen Loader or with a
   held Gas Tank, exactly like a real suit. Oxygen left in a suit chestplate used for sealing moves into the new tank.
 - The oxygen bar on screen is Ad Astra's own, in the same place (Ad Astra's client config moves both).
