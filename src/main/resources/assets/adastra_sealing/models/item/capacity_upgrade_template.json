@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "adastra_sealing:item/capacity_upgrade_template"
+  }
+}

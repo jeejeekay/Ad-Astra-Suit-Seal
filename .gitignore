@@ -1,0 +1,9 @@
+build/
+.gradle/
+run/
+run-data/
+.idea/
+*.iml
+build-log.txt
+# Mod jars to compile against (see libs/README.md). Not ours to redistribute.
+libs/*.jar

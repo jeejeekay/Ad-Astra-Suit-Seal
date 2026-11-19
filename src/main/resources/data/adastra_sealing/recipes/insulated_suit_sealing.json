@@ -1,0 +1,6 @@
+{
+  "type": "adastra_sealing:sealing",
+  "template": { "item": "adastra_sealing:insulated_suit_sealing_template" },
+  "addition": { "tag": "adastra_sealing:insulated_suit_pieces" },
+  "seal": "insulated"
+}

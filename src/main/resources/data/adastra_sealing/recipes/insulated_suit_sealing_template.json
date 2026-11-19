@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": { "tag": "ad_astra:ostrum_plates" },
+    "M": { "item": "minecraft:magma_cream" },
+    "O": { "item": "ad_astra:oxygen_gear" }
+  },
+  "pattern": [
+    "#M#",
+    "MOM",
+    "#M#"
+  ],
+  "result": { "item": "adastra_sealing:insulated_suit_sealing_template", "count": 2 }
+}

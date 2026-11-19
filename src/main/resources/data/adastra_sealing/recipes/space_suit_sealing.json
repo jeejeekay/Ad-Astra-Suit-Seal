@@ -1,0 +1,6 @@
+{
+  "type": "adastra_sealing:sealing",
+  "template": { "item": "adastra_sealing:space_suit_sealing_template" },
+  "addition": { "tag": "adastra_sealing:space_suit_pieces" },
+  "seal": "space"
+}
